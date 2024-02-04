@@ -8,7 +8,8 @@ class ProfileCard extends StatelessWidget {
     return Card(
       elevation: 5.0, // You can adjust the elevation as needed
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0), // Adjust the circular border radius
+        borderRadius:
+            BorderRadius.circular(15.0), // Adjust the circular border radius
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -23,7 +24,8 @@ class ProfileCard extends StatelessWidget {
                 color: Colors.blue, // You can replace this with an Image widget
                 child: const Center(
                   child: Text(
-                    'A', // You can replace this with an Image widget or a network image
+                    'A',
+                    // You can replace this with an Image widget or a network image
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,

@@ -1,61 +1,54 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        body: const DicePage(),
-        backgroundColor: Colors.red[800],
+        body: const MyApp(),
+        backgroundColor: Colors.blue[400],
         appBar: AppBar(
-          title: const Text('Dicey', style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.red[800],
+          backgroundColor: Colors.blue[800],
           centerTitle: true,
+          title: const Text(
+            'Ask Me Anything',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontFamily: 'Source Sans Pro',
+                letterSpacing: 2.0,
+                fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     ),
   );
 }
 
-class DicePage extends StatefulWidget {
-  const DicePage({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  State<DicePage> createState() => _DicePageState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class _DicePageState extends State<DicePage> {
-  int leftDiceRoll = 1;
-  int rightDiceRoll = 1;
+class _MyAppState extends State<MyApp> {
+  int randomBall = 2;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: [
-          Expanded(
-            child: TextButton(
-                onPressed: () {
-                  changeDiceFace();
-                },
-                child: Image.asset('images/dice$leftDiceRoll.png')),
-          ),
-          Expanded(
-            child: TextButton(
-                onPressed: () {
-                  changeDiceFace();
-                },
-                child: Image.asset('images/dice$rightDiceRoll.png')),
-          ),
-        ],
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Center(
+        child: TextButton(
+            onPressed: () {
+              setState(() {
+                randomBall = Random().nextInt(5) + 1;
+              });
+            },
+            child: Image.asset('images/ball$randomBall.png')),
       ),
     );
-  }
-
-  void changeDiceFace() {
-    setState(() {
-      leftDiceRoll = Random().nextInt(6) + 1;
-      rightDiceRoll = Random().nextInt(6) + 1;
-    });
   }
 }
